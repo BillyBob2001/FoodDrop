@@ -1,5 +1,4 @@
-
-function Bowl(){
-    Sprite.call(this);
+function Bowl(args){
+    Sprite.call(this,args);
 }
 
