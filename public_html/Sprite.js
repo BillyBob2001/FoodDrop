@@ -7,7 +7,10 @@ function Sprite(args){
     //METHODS************************************************************
     //create image on screen looks for a contact
    this.init=function(){
-    //creats a place for the image to go  
+       this.display();
+   } 
+   this.display=function(){
+        //creats a place for the image to go  
    
     this.container.style.position="absolute";
     this.container.style.left = this.x || new Error (1, args.name, "The x position of an image is not set");
@@ -25,14 +28,23 @@ function Sprite(args){
 
     // This next line will just add it to the <body> tag
     document.body.appendChild(this.container);  
-   } 
+   }
    
    //moves sprite on screen
    this.movement=function(xps, yps){
        this.x=this.x + xps;
        this.y=this.y + yps;
+       if(this.x > window.innerWidth){
+           this.x=0;
+           
+       }
+       else if(this.x < 0){
+           this.x=window.innerWidth; 
+       }
        this.container.style.top=this.y + "px";
        this.container.style.left=this.x + "px";
+       
+       
    }
    
    //kills objects
