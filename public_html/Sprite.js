@@ -4,6 +4,8 @@ function Sprite(args){
      this.container = document.createElement("div");
      this.x=args.x;
      this.y=args.y;
+     this.height=args.height;
+     
     //METHODS************************************************************
     //create image on screen looks for a contact
    this.init=function(){
@@ -32,24 +34,15 @@ function Sprite(args){
    
    //moves sprite on screen
    this.movement=function(xps, yps){
-       this.x=this.x + xps;
-       this.y=this.y + yps;
-       if(this.x > window.innerWidth){
-           this.x=0;
-           
-       }
-       else if(this.x < 0){
-           this.x=window.innerWidth; 
-       }
-       this.container.style.top=this.y + "px";
-       this.container.style.left=this.x + "px";
        
        
    }
    
    //kills objects
    this.die=function(){
-       
+       document.body.removeChild(this.container);
+       removeFood(this.id);
+       clearInterval(intId);
    }
    
    //emptys bowl
