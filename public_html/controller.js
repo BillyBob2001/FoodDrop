@@ -178,3 +178,9 @@ function checkFood(food){
     return food.id==this;
     
 }
+function startBanner(){
+    var startBanner=new Banner(25, 60, window.innerWidth/2, window.innerHeight/2, "green", "blue", "red", "START", 100, "times",start());
+    startBanner.init();
+        
+    
+}
