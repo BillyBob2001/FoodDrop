@@ -1,12 +1,12 @@
 //Food Set up. Personal stuff
 function Food(args){
-    var intId;
+     
     Sprite.call(this,args);
     
      this.init=function(){
        this.display();
        var me=this;
-       var intId=setInterval(function(){ me.drop() }, 90);
+       this.intId=setInterval(function(){ me.drop() }, 90);
    } 
    
    this.drop=function(){

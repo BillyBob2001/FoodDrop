@@ -1,6 +1,6 @@
 //main sprite object
 function Sprite(args){
- 
+    this.intId=0;
      this.container = document.createElement("div");
      this.x=args.x;
      this.y=args.y;
@@ -42,7 +42,7 @@ function Sprite(args){
    this.die=function(){
        document.body.removeChild(this.container);
        removeFood(this.id);
-       clearInterval(intId);
+       clearInterval(this.intId);
    }
    
    //emptys bowl
