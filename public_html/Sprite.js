@@ -5,7 +5,8 @@ function Sprite(args){
      this.x=args.x;
      this.y=args.y;
      this.height=args.height;
-     
+     this.width=args.width;
+     this.score=args.score;
     //METHODS************************************************************
     //create image on screen looks for a contact
    this.init=function(){
@@ -34,7 +35,7 @@ function Sprite(args){
    
    //moves sprite on screen
    this.movement=function(xps, yps){
-       
+           
        
    }
    
@@ -52,6 +53,11 @@ function Sprite(args){
    
    //sets image
    this.setImage=function(){
+       
+   }
+   this.locater=function(){
+       var location={x:this.x, y:this.y, height:this.height, width:this.width };
+      return location;
        
    }
 }

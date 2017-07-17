@@ -19,16 +19,19 @@ function Food(args){
            this.x=0;
            
        }
+       
        else if(this.x < 0){
            this.x=window.innerWidth; 
        }
        if(this.y> (window.innerHeight-this.height)){
+           dropOff(this);
            this.die();
            
        }
        this.container.style.top=this.y + "px";
        this.container.style.left=this.x + "px";
        
+       checker();
        
    }
 }

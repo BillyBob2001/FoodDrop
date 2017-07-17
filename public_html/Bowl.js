@@ -19,6 +19,7 @@ function Bowl(args){
        this.container.style.top=this.y + "px";
        this.container.style.left=this.x + "px";
        
+       checker();
        
    }
 }
