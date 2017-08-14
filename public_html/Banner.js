@@ -51,7 +51,8 @@ function Banner(height, width, x, y, textColour, borderColour, backgroundColour,
         
     }
     this.die=function(){
-        
+       document.body.removeChild(this.container);
+      
     }
     this.updateMessage=function(newMessage, placeHolder){
               var textCopy=this.text;

@@ -4,8 +4,15 @@ var catchingBowl="";
 var count = 0;
 
 var scoreBanner="";
+var timeBanner="";
+var endBanner="";
 
 var score = 0;
+
+var time = 10;
+
+var spawningFood;
+var timer;
 
 var foods=[];
 var foodTypes={
@@ -127,12 +134,20 @@ var foodTypes={
 
 //Starts the game by spawning the bowl, and it also spawns the food every 3sec
 function start(){
-     scoreBanner=new Banner(100, window.innerWidth, 0, 0, "red", "white", "black", "Score: |score|", 18, "chicago");
+    scoreBanner=new Banner(100, window.innerWidth, 0, 0, "red", "white", "black", "Score: |score|", 18, "chicago");
     scoreBanner.setup();
     scoreBanner.updateMessage(0, "|score|");
-    bowlSpawner();
-    setInterval( function(){foodSpawner()},3000);
     
+    timeBanner=new Banner(100, 100, 0,0, "red", "white", "black", "Time Left |time|", 18 ,"chicago");
+    timeBanner.setup();
+    timeBanner.updateMessage(time, "|time|");
+    
+    timer = setInterval(function() {timerUpdate()},1000);
+    
+    bowlSpawner();
+    spawningFood = setInterval( function(){foodSpawner()},1000);
+    
+  
    
     
 }
@@ -238,8 +253,34 @@ function dropOff (food){
     scoreBanner.updateMessage(score, "|score|");
     
 }
+function timerUpdate(){
+    time-=1;
+    
+    timeBanner.updateMessage(time, "|time|");
+    
+    if(time==0){
+        endGame();
+    }
+}
 
-
+function endGame(){
+    clearInterval(spawningFood);
+    clearInterval(timer);
+    scoreBanner.die();
+    timeBanner.die();
+    catchingBowl.die();
+    
+    endBanner = new Banner(300, 400, 200, 100, "red", "white", "black", "GAME OVER: |score| ", 30, "chicago", start);
+    endBanner.setup();
+    endBanner.updateMessage(score , "|score|");
+    
+    for (i = 0; i < foods.length; i++) { 
+       foods[i].die();
+    }
+    
+  
+   //new game button
+}
 
 
 
